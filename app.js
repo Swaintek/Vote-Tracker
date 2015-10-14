@@ -56,12 +56,14 @@ function addImages() {
   pic2.appendChild(photo2);
 }
 
+addImages();
 
 var pic1Button = document.getElementById('pic1');
   pic1Button.addEventListener('click', function() {
     pictures[randomIndex1].score += 1;  //increment the score for random image
     console.log(picArr[randomIndex1]);  //Display result
     addImages();
+    scoreUpdate();
   }
 );
 
@@ -70,10 +72,31 @@ var pic2Button = document.getElementById('pic2');
     pictures[randomIndex2].score += 1;
     console.log(picArr[randomIndex2]);
     addImages();
+    scoreUpdate();
   }
 );
 
 //Added button functionality for user to select image
-var picButton = document.getElementById('picButton');
-picButton.addEventListener('click', addImages);
+var scoreUpdate = function() {
+  var picButton = document.getElementById('picButton');
+  picButton.addEventListener('click', addImages);
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var data = [
+      {
+          value: pictures[randomIndex1].score,
+          color:"#F7464A",
+          highlight: "#FF5A5E",
+          label: "Pic 1"
+      },
+      {
+          value: pictures[randomIndex2].score,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Pic2"
+      },
+  ];
+  var myNewChart = new Chart(ctx).Doughnut(data);
+}
+
 
