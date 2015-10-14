@@ -9,7 +9,7 @@ var Pic = function (imgsrc){
 };
 
 for( var i=0; i<picArr.length; i++){
-  var newPic = new Pic(picArr[i]);  //Incremented score of the selected image
+  var newPic = new Pic(picArr[i]);  //Increment score of the selected image
   // is stored in the newPic variable
   pictures.push(newPic); //Populate the picture array with result
 }
@@ -46,7 +46,7 @@ function addImages() {
 
   //Created a while loop to prevent identical pictures from appearing 
   //at the same time.
-  
+
   randomIndex2 = getRandomNum();
     while(randomIndex1 === randomIndex2){  
       randomIndex2 = getRandomNum()
